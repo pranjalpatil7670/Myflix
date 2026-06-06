@@ -222,4 +222,42 @@ function filterCategory2(cat) {
 renderVideos(videos);
 </script>
 </body>
+<script>
+  // ===== MYFLIX SEARCH FIX =====
+  const searchInput = document.querySelector('input[type="text"], .search-input, #searchInput, input[placeholder]');
+  const searchBtn = document.querySelector('.search-btn, #searchBtn, button[type="submit"], .fa-search')?.closest('button') 
+                    || document.querySelector('button');
+
+  function performSearch() {
+    const query = searchInput?.value?.toLowerCase().trim();
+    if (!query) {
+      // Search empty asel tr sagle cards show kar
+      document.querySelectorAll('.video-card, .card, .movie-card, [class*="card"]').forEach(card => {
+        card.style.display = '';
+      });
+      return;
+    }
+
+    // Sagle cards madhe search kar
+    document.querySelectorAll('.video-card, .card, .movie-card, [class*="card"]').forEach(card => {
+      const text = card.innerText.toLowerCase();
+      if (text.includes(query)) {
+        card.style.display = '';       // Show
+      } else {
+        card.style.display = 'none';   // Hide
+      }
+    });
+  }
+
+  // Typing var search
+  searchInput?.addEventListener('input', performSearch);
+
+  // Enter key var search
+  searchInput?.addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') performSearch();
+  });
+
+  // Button click var search
+  searchBtn?.addEventListener('click', performSearch);
+</script>
 </html>
