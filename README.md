@@ -124,7 +124,7 @@ Welcome to myflix .
 <div class="no-results" id="noResults">😕 Koi video nahi mili!</div>
 <div id="videos-container"></div>
 
-<footer>© 2024 MyFlix — Made with ❤️</footer>
+<footer>©  MyFlix — Made with ❤️ by pranjal.</footer>
 
 <script>
 const videos = [
